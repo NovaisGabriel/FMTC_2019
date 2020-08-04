@@ -1,0 +1,60 @@
+%\chapter{Review}
+
+%The metamodels investigated in literature are sophisticated predictive models, which might cause difficulties in terms of interpretation or calibration.
+
+%There are many publications on metamodeling approaches, which are, essentially, sophisticated predictive models. 
+%Recently, these approaches have been used to speed up the valuation of large VA portfolios. 
+Table~\ref{tab:metamodeling} shows the main metamodeling approaches applied in the valuation of VA portfolios. Some of the metamodels proposed include: linear regression models with interactions, GB2 regression model, ordinary kriging, universal kriging,  rank-order kriging (quantile kriging), and tree-based models.  
+
+\cite{gan2018valuation} investigated the effect of including interactions in linear regression models for the valuation of large VA portfolios. His results show that including interactions in linear regression models can lead to significant improvements in prediction accuracy. 
+%Since VA contracts have many features, a large number of possible interactions might exist between them. So he selected the important interactions using overlapped group-lasso that could produce hierarchical interaction models. The numeric results obtained in \cite{gan2018valuation} show that including interactions in linear regression models can lead to significant improvements in prediction accuracy. 
+
+In \cite{gan2017modeling}, the GB2 distribution was used to model the fair market values of VA guarantees, because it can capture the skewness found in their empirical distributions. 
+%The GB2 distribution is a flexible statistical distribution that contains three shape parameters and one scale parameter. 
+%However, finding the optimum parameters for the GB2 regression model was not straightforward and therefore difficult numerical challenges were present. 
+The numerical results of the approach show that the four-stage optimization, described in the article, performs well and the fitted GB2 regression model performed as expected. A few comparisons made by the authors: (1) the GB2 model captures skewness better than the kriging model; (2) the GB2 model outperforms the kriging model in computational speed; (3) GB2 model produces comparably accurate predictions as the kriging model at portfolio level.
+
+An important step in the metamodeling process is the selection of representative policies. Gan and Valdez (2016) compared five different experimental design methods for the GB2 regression model: random sampling, low-discrepancy sequence, data clustering (hierarchical k-means), Latin hypercube sampling, and conditional Latin hypercube sampling.
+
+\cite{hejazi2016neural} proposed a machine learning approach. After a small set of representative VA contracts was selected and valued via Monte Carlos simulations, the values of these representatives contracts were then used in a spatial interpolation method that found the value of the contracts in the input portfolio as a linear combination of the values of the representative contracts. The traditional spatial interpolation methods as kriging, IDW and RBF (Hejazi 2015) have a strong dependence on the distance function used in estimations. Therefore, the authors proposed a neural network implementation of the spatial interpolation technique that learns an effective choice of distance function. The results show the superior accuracy of the neural network approach in estimation of the delta value for the input portfolio when compared to the traditional spatial interpolation techniques.
+
+\cite{xu2018moment} propose a moment matching machine learning (MMML) approach to compute dollar deltas, VaRs and CVaRs for large portfolios. There are two main contributions that could be highlighted in their paper. First, they proposed a moment matching method for single VA contracts. Computations using this method are much faster than nested MC simulations.
+%
+%Due to these selected scenarios, the moment matching method can compute the annual dollar deltas, VaRs and CVaRs as accurately as the nested simulations, but takes far less computational time then nested simulations. 
+%
+The second contribution is that they combine the moment matching method with classical machine learning methods to manage the risk of large VA portfolios. 
+%The ``machine is trained'' with a standard machine learning method, such as neural network or tree regressions. 
+%Their MMML approach can easily handle large portfolios (which cannot be handled via the nested simulation method due to cost). Their approach appears to be a remarkably efficient alternative to the standard nested simulation methodology to hedge and manage the risk of large portfolios arising in the insurance industry.
+Their MMML approach can easily handle large portfolios, being a remarkably efficient alternative to the standard nested simulation methods to hedge and manage the risk of large portfolios arising in the insurance industry.
+
+
+\begin{table}
+\begin{center}
+\begin{small}
+\makebox[\textwidth][c]{
+\begin{tabular}{lll}
+\toprule
+Publication & Experimental Design & Metamodel \\
+\midrule
+Gan (2013) & Clustering & Kriging \\
+Gan and Lin (2015) & Clustering & Kriging \\
+Gan (2015) & LHS & Kriging \\
+Hejazi and Jackson (2016) & Uniform sampling & Neural network \\
+Gan and Valdez (2016) & Clustering, LHS & GB2 regression \\
+Gan and Valdez (2017) & Clustering & gamma regression \\
+Gan and Lin (2017) & LHS, conditional LHS & Kriging \\
+Hejazi et al. (2017) & Uniform sampling & Kriging, IDW, RBF\\
+Gan and Huang (2017) & Clustering & Kriging \\
+Xu et al (2018) & Random sampling & Neural Network, regression trees \\
+Gan and Valdez (2018) & Clustering & GB2 regression \\
+Quan, Gan and Valdez (2019) & Clustering & Regression trees \\
+\bottomrule
+\end{tabular}
+}
+\end{small}
+\end{center}
+\caption{Metamodeling approaches for the valuation of variable annuities.}\label{tab:metamodeling}
+\end{table}
+
+
+

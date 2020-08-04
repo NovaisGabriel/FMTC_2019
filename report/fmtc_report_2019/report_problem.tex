@@ -1,0 +1,28 @@
+\section{Problem statement}
+
+%The valuation of variable annuity portfolios consists in a prediction problem. The scope of this work is to investigate interaction terms in the Generalized Linear Model framework as a metamodel for the valuation of the complex financial guarantees associated with VA contracts. %Althought its very important accuracies and variances in prediction models, we would also like to interpret how the characteristics of the contracts affect their fair market values.
+
+%The Overlapped Grouped Lasso approach produce residuals from regression that are not normally distributed, hence we cannot interpret p-values as significant. There is a possible solution that concerns to applying the GLM with Overlapped Group Lasso to model the problem. In order to solve this we propose  Box-Cox regression model, which can handle with those  not normally distributed residuals by introducing some transformations. Others possibilities to deal with the prediction problem without concern with these residuals is just look to machine learning metamodels as Tree Based regression and Neural Network model.
+
+The objective of the project is to improve the consistency in the determination of statistically significant interaction terms in linear models with interactions used for the valuation of portfolios of variable annuity contracts. The approach has been introduced in~\cite{gan2018regression} with excellent prediction results. However, the non-Gaussian residuals of the fitted models compromise any inference based on the hypothesis of gaussianity. Consequently, one cannot identify the significant interaction terms and interpret the predictions provided by the models.
+
+Initially, an investigation of interaction terms in the framework of generalized linear models was considered. However, given the time constraints of the challenge, other alternative solutions were explored. First, as described in Section~\ref{sec:linear_model}, we replicate the results obtained in~\cite{gan2018regression} as a starting point. In the following section, we explore the Box-Cox regression model as an alternative to improve the original results. Finally, in Section~\ref{sec:tree_based_models}, we explore tree-based models as a metamodeling approach, as in~\cite{quan2018tree}.
+
+%		 \begin{frame}{The Problem}
+%        \begin{itemize}
+%			\setlength\itemsep{0,7em}    
+%            \item The valuation of variable annuity portfolios: a prediction problem;
+%            \item But we would also like to interpret how the characteristics of the contracts affect their fair market values;
+%            \item The Overlapped Grouped Lasso: the residuals of the regression are not normally distributed, hence we cannot interpret p-values as %significant;
+%            \item Possible solution: GLM with Overlapped Group Lasso;
+%            %\item Issue: algorithm is not implemented in any package and involves multiple step optimizatio;
+%            \item Proposed solution: Box-Cox regression model.
+%       	 \end{itemize}
+%    	\end{frame}		
+%		\begin{itemize}
+%			\setlength\itemsep{0,5em}
+%			\item The scope of this work is to investigate interaction terms in Generalized Linear
+%Model framework as a metamodel for valuing the complex financial guarantees associated with VA contracts. 
+%			\item We choose statiscally significant interaction terms to the model, evaluate performance as predictive model, and interpret the resulting effect of the addition of interaction terms. 
+%			\item We propose others metamodels: Box Cox regression and Neural Network regression. After describe these methods we will compare both e suggest the best of them to evaluate a VA portfolio.
+%		\end{itemize}

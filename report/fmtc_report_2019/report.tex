@@ -1,0 +1,240 @@
+\documentclass[preprint,authoryear,11pt]{report}
+\setlength{\parindent}{0cm}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\usepackage{colortbl}% http://ctan.org/pkg/colortbl
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\usepackage{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage{graphicx}% http://ctan.org/pkg/graphicx
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{pdflscape}
+\usepackage{palatino}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{titlepic}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{snakes}
+%\usepackage[framed]{mcode}
+\usepackage{amsmath,varwidth,array,ragged2e}
+\newcolumntype{L}{>{\varwidth[c]{\linewidth}}l<{\endvarwidth}}
+\newcolumntype{M}{>{$}l<{$}}
+\def\ds{\mathrm{d}s}%
+\usepackage{units}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Sa}{\sum_{i=1}^d}
+\newcommand{\Mx}{M_{X_{i}}(d)}
+\newcommand{\MX}{M_{\underline{X}}(\underline{1})}
+\newcommand{\EL}{\E\left[l(\mathrm{\underline{X}}-\underline{m})\right]}
+\newcommand{\EdL}{\E\left[\frac{\partial}{\partial x_i}l(\mathrm{\underline{X}}-\underline{m})\right]}
+\newcommand{\nla}{\\ \Rightarrow \,}
+\newcommand{\Xun}{\mathrm{\underline{X}}}  
+
+\graphicspath{ {images/} }
+\usepackage{xcolor}
+\usepackage{lipsum}% Used for dummy text.
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{namecolor}{cmyk}{1,.50,0,.10} 
+
+% Theorem declarations
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+
+\newcommand{\Ainfo}{\mathcal{A}}
+\newcommand{\Afiltration}{\underline{\mathcal{A}}}
+\newcommand{\real}{\mathfrak{R}}
+\newcommand{\naturalNum}{\mathcal{N}}
+\newcommand{\normalDist}{\mathcal{N}}
+\newcommand{\rnQ}{\mathbb{Q}}
+\newcommand{\forward}{\text{For}}
+\newcommand{\future}{\text{Fut}}
+\newcommand{\variance}{\mathbb{V}\text{ar}}
+\newcommand{\covariance}{\mathbb{C}\text{ov}}
+\newcommand{\indicator}{\mathbb{I}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\cadlag}{c\`{a}dl\`{a}g\ }
+\renewcommand\thesection{\arabic{section}}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+% The following commands are for better float positioning (http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html)
+%   General parameters, for ALL pages:
+\renewcommand{\topfraction}{0.9}          % max fraction of floats at top
+\renewcommand{\bottomfraction}{0.8}       % max fraction of floats at bottom
+%   Parameters for TEXT pages (not float pages):
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}               % 2 may work better
+\setcounter{dbltopnumber}{2}              % for 2-column pages
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand{\dbltopfraction}{0.9}       % fit big float above 2-col. text
+\renewcommand{\textfraction}{0.07}        % allow minimal text w. figs
+%   Parameters for FLOAT pages (not text pages):
+\renewcommand{\floatpagefraction}{0.7}    % require fuller float pages
+% N.B.: floatpagefraction MUST be less than topfraction !!
+\renewcommand{\dblfloatpagefraction}{0.7} % require fuller float pages
+% remember to use [htp] or [htpb] for placement
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}} % Generic publisher logo
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{1em}
+
+\colorlet{tableheadcolor}{gray!25} % Table header colour = 25% gray
+\newcommand{\headcol}{\rowcolor{tableheadcolor}} %
+\colorlet{tablerowcolor}{gray!10} % Table row separator colour = 10% gray
+\newcommand{\rowcol}{\rowcolor{tablerowcolor}} %
+    % Command \topline consists of a (slightly modified) \toprule followed by a \heavyrule rule of colour tableheadcolor (hence, 2 separate rules)
+\newcommand{\topline}{\arrayrulecolor{black}\specialrule{0.1em}{\abovetopsep}{0pt}%
+            \arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+    % Command \midline consists of 3 rules (top colour tableheadcolor, middle colour black, bottom colour white)
+\newcommand{\midline}{\arrayrulecolor{tableheadcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+            \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+    % Command \rowmidlinecw consists of 3 rules (top colour tablerowcolor, middle colour black, bottom colour white)
+\newcommand{\rowmidlinecw}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+            \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+    % Command \rowmidlinewc consists of 3 rules (top colour white, middle colour black, bottom colour tablerowcolor)
+\newcommand{\rowmidlinewc}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+            \arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+    % Command \rowmidlinew consists of 1 white rule
+\newcommand{\rowmidlinew}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+    % Command \rowmidlinec consists of 1 tablerowcolor rule
+\newcommand{\rowmidlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+    % Command \bottomline consists of 2 rules (top colour
+\newcommand{\bottomline}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+\newcommand{\bottomlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+\hbox{ % Horizontal box
+\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+\rule{1pt}{\textheight} % Vertical line
+\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+
+\begin{flushleft}
+{\noindent\Huge\bfseries A metamodelling approach to estimate fair market values}\\[2\baselineskip] % Title
+\end{flushleft}
+{\large \textit{TEAM BIGS}}\\[ \baselineskip] % Team number
+{\large{\textsc{Brenda Prallon}}, \small{EMAp-FGV} \\ \large{\textsc{Gabriel Novais}}, \small{EMAp-FGV}\\ \large{\textsc{Igor Carvalho}}, \small{EMAp-FGV}} \\ \large{\textsc{Sergio Maffra}}, \small{King's College London} \\ % Author name and affiliated university
+{\large{\textsc{\\\textit{Supervisor}}}: \\ \large{\textsc{Emiliano Valdez}}, \small{University of Connecticut} \\ } % Mentor and affiliated company/university
+
+\vspace{80mm} % Whitespace between the title block and the publisher
+{\noindent \small{EMAp, Funda\c{c}\~ao Getulio Vargas, Rio de Janeiro, Brazil}}\\[\baselineskip] % Publisher and logo
+}}
+\endgroup}
+
+\begin{document}
+	\restoregeometry % restores the geometry
+	\nopagecolor % Use this to restore the color pages to white
+ \thispagestyle{empty} % Removes page numbers
+
+\titleGM 
+
+\begingroup
+	\makeatletter
+	% Redefine the \chapter* header macro to remove vertical space
+	\def\@makeschapterhead#1{%
+	  %\vspace*{50\p@}% Remove the vertical space
+	  {\parindent \z@ \raggedright
+	    \normalfont
+	    \interlinepenalty\@M
+	    \Huge \bfseries  #1\par\nobreak
+	    \vskip 40\p@
+	  }}
+	\makeatother
+
+\endgroup
+
+\tableofcontents
+
+\input{report_introduction}
+\input{report_review}
+\input{report_synthetic_dataset}
+\chapter{The challenge}
+\input{report_problem}
+\section{Results}
+%\chapter{Results}
+\input{report_linear_model_with_interactions}
+\input{report_box_cox_regression_model}
+\input{report_tree_based_models.tex}
+%\input{report_neural_network}
+%\chapter{Conclusion}
+
+
+
+
+
+%\chapter{Introduction} \input{Chapters/"Introduction"/"Introduction"}
+%\newpage
+%\chapter{Literature} \input{Chapters/"Literature"/"Literature"}
+%\newpage
+%\chapter{Synthetic Data} \input{Chapters/"Synthetic Data"/"Synthetic Data"}
+%\newpage
+%\chapter{Metamodeling Approach} \input{Chapters/"Metamodeling Approach"/"Metamodeling Approach"}
+%\newpage
+%\chapter{Conclusion} \input{Chapters/"Conclusion"/"Conclusion"}
+
+	
+\newpage
+\bibliographystyle{elsarticle-harv}
+%\bibliographystyle{plain}
+%\bibliography{BibliographySample}
+%GAN, Guojun. Application of metamodeling to the valuation of large variable annuity portfolios. In: Proceedings of the 2015 Winter Simulation Conference. IEEE Press, 2015. p. 1103-1114.
+
+%GAN, Guojun; VALDEZ, Emiliano A. Regression modeling for the valuation of large variable annuity portfolios. North American Actuarial Journal, v. 22, n. 1, p. 40-54, 2018.
+
+%GAN, Guojun; VALDEZ, Emiliano A. Modeling partial greeks of variable annuities with dependence. Insurance: Mathematics and Economics, v. 76, p. 118-134, 2017.
+
+%GAN, Guojun. Valuation of large variable annuity portfolios using linear models with interactions. Risks, v. 6, n. 3, p. 71, 2018.
+
+%GAN, Guojun; VALDEZ, Emiliano A. Metamodeling for Variable Annuities. CRC Press, 2019.
+
+%GAN, Guojun; VALDEZ, Emiliano A. Valuation of Large Variable Annuity Portfolios with Rank Order Kriging. North American Actuarial Journal, Forthcoming, 2019.
+
+%HEJAZI, Seyed Amir; JACKSON, Kenneth R.; GAN, Guojun. A spatial interpolation framework for efficient valuation of large portfolios of variable annuities. arXiv preprint arXiv:1701.04134, 2017.
+
+%HEJAZI, Seyed Amir. A Neural Network Approach to Efficient Valuation of Large VA Portfolios. 2016. Phd thesis. University of Toronto (Canada).
+
+%XU, Wei et al. Moment matching machine learning methods for risk management of large variable annuity portfolios. Journal of Economic Dynamics and Control, v. 87, p. 1-20, 2018  
+%\newpage
+
+%\bibliographystyle{plain}
+%\bibliography{sp}
+%\bibliographystyle{amsplain}
+%\addcontentsline{toc}{section}{References}
+\bibliography{reference}
+
+\end{document}

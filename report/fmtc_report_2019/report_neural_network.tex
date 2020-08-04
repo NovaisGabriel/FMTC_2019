@@ -1,0 +1,70 @@
+\chapter{Neural network}
+
+		\begin{itemize}
+			\setlength\itemsep{0,5em}
+			\item In Heajzi and Jackson (2016), the authors proposed a neural network apporach with only one hidden layer and feed-foward approximation to calculate distance function.
+			\item Extended version of the Nadaraya-Watson kernel regression model to estimate the Greeks: Assuming $y\left(z_{1}\right), \cdots, y\left(z_{n}\right)$  are  the observed values at known locations $z_{1}, \cdots, z_{n}$ the Nadaraya-Watson estimator approximates the value $y(z)$ at the location $z$ by:
+		\end{itemize}			 			 
+		\begin{equation}
+\hat{y}(z)=\sum_{i=1}^{n} \frac{K_{h}\left(z-z_{i}\right) \times y\left(z_{i}\right)}{\sum_{j=1}^{n} K_{h}\left(z-z_{j}\right)}
+		\end{equation}
+		
+		\;\;\;\;\;\;\centering where $K_h$ is a kernel with a bandwidth of $h$.
+		 
+		\begin{itemize}
+			\setlength\itemsep{0,5em}
+			\item The Nadaraya-Watson estimator was first proposed for kernel regression applications and hence the choice of kernel function $K_h$ was a necessity.  For our application of interest, we choose to use the following extended version of the Nadaraya-Watson estimator:
+		\end{itemize}			 			 
+		\begin{equation}
+\hat{y}(z)=\sum_{i=1}^{n} \frac{G_{h_{i}}\left(z-z_{i}\right) \times y\left(z_{i}\right)}{\sum_{j=1}^{n} G_{h_{j}}\left(z-z_{j}\right)}
+		\end{equation}
+		
+		\;\;\;\;\;\;\centering where $G$ is a nonlinear differentiable function and the subscript $h_i$, similar to the bandwidth $h$ of kernels, denotes the range of influence of each $y(z_i)$ on  the  estimated  value.
+		 
+		\begin{itemize}
+			\setlength\itemsep{0,5em}
+			\item Assuming $x_1,···,x_n$ are the inputs of neuron $j$ at hidden levell.  First a linear combination of input variables is constructed at each neuron:
+		\end{itemize}			 			 
+		\begin{equation}
+		a_{j}^{(l)}=\sum_{i=1}^{n} w_{i j}^{(l)} x_{i}+b_{j}^{(l)}
+		\end{equation}
+		
+		\;\;\;\;\;\;\centering where parameters $w_{ij}$ are referred to as weights and parameter $b_j$ is called the bias.
+		 
+		\begin{itemize}
+			\setlength\itemsep{0,5em}
+			\item Our proposed neural network allows us to rewrite Equation (1) as:
+		\end{itemize}			 			 
+		\begin{equation}
+		\hat{y}(z)=\sum_{i=1}^{n} \frac{\exp \left(\mathbf{w}_{\mathbf{i}}^{T} \mathbf{f}\left(z, z_{i}\right)+b_{i}\right) \times y\left(z_{i}\right)}{\sum_{j=1}^{n} \exp \left(\mathbf{w}_{\mathbf{j}}^{T} \mathbf{f}\left(z, z_{j}\right)+b_{j}\right)}
+		\end{equation}
+		
+		\;\;\;\;\;\;\centering where the vector $f(z,z_i)$ represents the features in the input layer that are related to the representative VA policy $z_i$, and vector $w_i$ contains the weights associated with each feature in $f$ at neuron $i$ of the hidden layer. 
+		 
+		\begin{itemize}
+			\setlength\itemsep{0,5em}
+			\item Those features $f(z,z_i)$ behave in different ways if variable $z_i$ is categorical or continuous. If it is categorical then we have:
+		\end{itemize}			 			 
+		\begin{equation}
+		f(z,z_i)=\left\{\begin{array}{ll}{0} & {\text { if } x_{c}=x_{c_{i}}} \\ {1} & {\text { if } x_{c} \neq x_{c_{i}}}\end{array}\right.
+		\end{equation}
+		\begin{itemize}
+			\setlength\itemsep{0,5em}
+			\item  If it is continuous then we have:
+		\end{itemize}			 			 
+		\begin{equation}
+		f\left(z, z_{i}\right)=\frac{\left[t(x)-t\left(x_{i}\right)\right]^{+}}{R_{t}}
+		\end{equation}
+		
+		\centering $t \in\{\text { maturity, age }, \mathrm{AV}, \mathrm{GD} / \mathrm{AV}, \mathrm{GW} / \mathrm{AV}, \text { withdrawal rate }\}$
+		 
+		\begin{itemize}
+			\setlength\itemsep{0,5em}
+			\item The objective of the calibration process is then to find a set of weights and bias parameters that minimizes the Mean Squared Error (MSE) in the estimation of the Greeks of the training portfolio. 
+		\end{itemize}			 			 
+		\begin{equation}
+		E(\mathbf{w}, \mathbf{b})=\frac{1}{2|B|} \sum_{k=1}^{|B|}\left\|\hat{y}\left(\overline{z}_{k}, \mathbf{w}, \mathbf{b}\right)-y\left(\overline{z}_{k}\right)\right\|^{2}
+		\end{equation}
+		
+		\;\;\;\;\;\;\centering where $\overline{z}_{k}, 1 \leq k \leq|B|,$ are the VA policies in the training portfolio.
+		 
